@@ -155,6 +155,7 @@
             this.pbAngleDisplay.Size = new System.Drawing.Size(100, 100);
             this.pbAngleDisplay.TabIndex = 12;
             this.pbAngleDisplay.TabStop = false;
+            this.pbAngleDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbAngleDisplay_Paint);
             // 
             // gbAuto
             // 

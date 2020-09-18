@@ -5,11 +5,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace METALTwister
 {
     public partial class AngleBlaster : Form
     {
+        static Bitmap anglePrev = null;
         const long addr = 0x33B19C;
         const long frAddr = 0x269BD8;
         byte[] frOn = BitConverter.GetBytes((ushort)0x5FAB);
@@ -33,6 +35,7 @@ namespace METALTwister
         public AngleBlaster()
         {
             InitializeComponent();
+            pbAngleDisplay.Image = anglePrev;
         }
 
         private void nudBlaster_ValueChanged(object sender, EventArgs e)
@@ -74,9 +77,11 @@ namespace METALTwister
 
         private void tbAngle_ValueChanged(object sender, EventArgs e)
         {
-            nudSpecificSet.Value = (tbAngle.Value / 10);
+            nudSpecificSet.Value = tbAngle.Value / 10;
             byte[] bytes = BitConverter.GetBytes(DegToUInt(tbAngle.Value / 10));
             Core.WriteBytes(Core.BaseAddress + addr, bytes);
+            Imaging.CreateAnglePreview(tbAngle.Value / 10, AutoEnabled, cbFreeRoam.Checked, out anglePrev);
+            pbAngleDisplay.Image = anglePrev;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -112,6 +117,12 @@ namespace METALTwister
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/projectcomet64/metal-twister/wiki");
+        }
+
+
+        private void pbAngleDisplay_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }
