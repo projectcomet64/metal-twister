@@ -32,5 +32,10 @@ namespace METALTwister
         {
             Process.Start("https://github.com/projectcomet64/metal-twister/wiki");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
