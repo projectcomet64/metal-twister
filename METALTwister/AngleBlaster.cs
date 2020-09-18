@@ -1,8 +1,6 @@
 ﻿using METALTwister.Properties;
 using M64MM.Utils;
 using System;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing;
@@ -35,11 +33,8 @@ namespace METALTwister
         public AngleBlaster()
         {
             InitializeComponent();
+            Imaging.CreateAnglePreview(tbAngle.Value / 10, AutoEnabled, cbFreeRoam.Checked, out anglePrev);
             pbAngleDisplay.Image = anglePrev;
-        }
-
-        private void nudBlaster_ValueChanged(object sender, EventArgs e)
-        {
         }
 
         private uint DegToUInt(double val)
@@ -117,12 +112,6 @@ namespace METALTwister
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/projectcomet64/metal-twister/wiki");
-        }
-
-
-        private void pbAngleDisplay_Paint(object sender, PaintEventArgs e)
-        {
-            
         }
     }
 }

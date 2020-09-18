@@ -92,7 +92,6 @@
             this.nudBlaster.Name = "nudBlaster";
             this.nudBlaster.Size = new System.Drawing.Size(86, 20);
             this.nudBlaster.TabIndex = 0;
-            this.nudBlaster.ValueChanged += new System.EventHandler(this.nudBlaster_ValueChanged);
             // 
             // label1
             // 
@@ -155,7 +154,6 @@
             this.pbAngleDisplay.Size = new System.Drawing.Size(100, 100);
             this.pbAngleDisplay.TabIndex = 12;
             this.pbAngleDisplay.TabStop = false;
-            this.pbAngleDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbAngleDisplay_Paint);
             // 
             // gbAuto
             // 
