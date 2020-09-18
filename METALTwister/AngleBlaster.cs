@@ -4,6 +4,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace METALTwister
 {
@@ -106,6 +107,11 @@ namespace METALTwister
         {
             frmAbout aFrm = new frmAbout();
             aFrm.ShowDialog();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/projectcomet64/metal-twister/wiki");
         }
     }
 }

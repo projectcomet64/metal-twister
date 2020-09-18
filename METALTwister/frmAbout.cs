@@ -27,5 +27,10 @@ namespace METALTwister
         {
             Process.Start("https://comet.glitchypsi.xyz");
         }
+
+        private void btnWiki_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/projectcomet64/metal-twister/wiki");
+        }
     }
 }

@@ -108,6 +108,7 @@
             this.btnWiki.TabIndex = 6;
             this.btnWiki.Text = "Wiki";
             this.btnWiki.UseVisualStyleBackColor = true;
+            this.btnWiki.Click += new System.EventHandler(this.btnWiki_Click);
             // 
             // frmAbout
             // 
