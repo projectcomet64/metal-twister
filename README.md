@@ -5,6 +5,8 @@
 
 Spin Mario, because you want to have precise angles, yes?
 
+See the trailer [here](https://youtu.be/gZ-X8DBJ9Y4)
+
 You can even spin him while in first person control mode. Flexible!
 
 If you need support, head on to the [Wiki](https://github.com/projectcomet64/metal-twister/wiki) or join the [Project Comet Discord](https://comet.glitchypsi.xyz).
