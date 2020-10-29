@@ -11,7 +11,7 @@ namespace METALTwister
     {
         AngleBlaster bform;
 
-        public string SafeName => "Twister";
+        public string SafeName => "METAL Twister";
 
         public string Description => "Spin animations and enable Free Roam";
 
