@@ -57,7 +57,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(317, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "METAL Twister for M64MM3 Alpha 1";
+            this.label1.Text = "METAL Twister for M64MM3 Alpha 2";
             // 
             // lbVer
             // 
@@ -65,9 +65,9 @@
             this.lbVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbVer.Location = new System.Drawing.Point(12, 246);
             this.lbVer.Name = "lbVer";
-            this.lbVer.Size = new System.Drawing.Size(38, 20);
+            this.lbVer.Size = new System.Drawing.Size(51, 20);
             this.lbVer.TabIndex = 2;
-            this.lbVer.Text = "v1.0";
+            this.lbVer.Text = "v1.0.1";
             this.lbVer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2

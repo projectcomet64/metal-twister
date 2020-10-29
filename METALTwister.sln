@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "METALTwister", "METALTwister\METALTwister.csproj", "{F24753AF-18B3-460E-A176-016410B05C2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM.Utils", "..\M64MM\M64MM.Utils\M64MM.Utils.csproj", "{3587B41B-7005-49CE-A884-6986ADC8CA01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M64MM.Addon", "..\M64MM\M64MM.Addon\M64MM.Addon.csproj", "{62661308-804D-4C76-9AA2-952D62AFD028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F24753AF-18B3-460E-A176-016410B05C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F24753AF-18B3-460E-A176-016410B05C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F24753AF-18B3-460E-A176-016410B05C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62661308-804D-4C76-9AA2-952D62AFD028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62661308-804D-4C76-9AA2-952D62AFD028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62661308-804D-4C76-9AA2-952D62AFD028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62661308-804D-4C76-9AA2-952D62AFD028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

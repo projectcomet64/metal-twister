@@ -1,6 +1,8 @@
 ﻿using M64MM.Additions;
+using METALTwister.Properties;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace METALTwister
 {
@@ -12,6 +14,8 @@ namespace METALTwister
         public string SafeName => "Twister";
 
         public string Description => "Spin animations and enable Free Roam";
+
+        public Image AddonIcon => Resources.twister_512;
 
         public void Close(EventArgs e)
         {
