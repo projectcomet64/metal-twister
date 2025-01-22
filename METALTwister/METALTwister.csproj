@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>METALTwister</RootNamespace>
     <AssemblyName>METALTwister</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,7 +69,13 @@
     <EmbeddedResource Include="AngleBlaster.resx">
       <DependentUpon>AngleBlaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AngleBlaster.ru.resx">
+      <DependentUpon>AngleBlaster.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.ru.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -88,14 +96,19 @@
     <ProjectReference Include="..\..\M64MM\M64MM.Addon\M64MM.Addon.csproj">
       <Project>{62661308-804d-4c76-9aa2-952d62afd028}</Project>
       <Name>M64MM.Addon</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\M64MM\M64MM.Utils\M64MM.Utils.csproj">
       <Project>{3587b41b-7005-49ce-a884-6986adc8ca01}</Project>
       <Name>M64MM.Utils</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\twister_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\rotation_panel_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
