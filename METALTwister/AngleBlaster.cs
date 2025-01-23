@@ -15,6 +15,10 @@ namespace METALTwister
         byte[] frOn = BitConverter.GetBytes((ushort)0x5FAB);
         byte[] frOff = BitConverter.GetBytes((ushort)0x98D5);
         bool _auto = false;
+
+        private Point startPoint;
+        private bool isDragging = false;
+
         public bool AutoEnabled
         {
             get => _auto; set
@@ -33,7 +37,7 @@ namespace METALTwister
         public AngleBlaster()
         {
             InitializeComponent();
-            Imaging.CreateAnglePreview(tbAngle.Value / 10, AutoEnabled, cbFreeRoam.Checked, out anglePrev);
+            Imaging.CreateAnglePreview((float) nudSpecificSet.Value / 10, AutoEnabled, cbFreeRoam.Checked, out anglePrev);
             pbAngleDisplay.Image = anglePrev;
         }
 
@@ -49,34 +53,18 @@ namespace METALTwister
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-            tbAngle.Value = (int)Math.Round(nudSpecificSet.Value * 10);
+            UpdateAngle((int)nudSpecificSet.Value);
         }
 
         public void AddAngle()
         {
             if (!AutoEnabled) return;
 
-            if (tbAngle.Value + (nudBlaster.Value*10) > tbAngle.Maximum)
-            {
-                tbAngle.Value += (int)((nudBlaster.Value * 10) - tbAngle.Value);
-            }
-            else if (tbAngle.Value + (nudBlaster.Value * 10) < 0)
-            {
-                tbAngle.Value = (int)(tbAngle.Maximum + (nudBlaster.Value * 10));
-            }
-            else
-            {
-                tbAngle.Value += (int)(nudBlaster.Value * 10);
-            }
-        }
+            int newAngle = (int)(getAngleFromGame() + nudBlaster.Value);
 
-        private void tbAngle_ValueChanged(object sender, EventArgs e)
-        {
-            nudSpecificSet.Value = tbAngle.Value / 10;
-            byte[] bytes = BitConverter.GetBytes(DegToUInt(tbAngle.Value / 10));
-            Core.WriteBytes(Core.BaseAddress + addr, bytes);
-            Imaging.CreateAnglePreview(tbAngle.Value / 10, AutoEnabled, cbFreeRoam.Checked, out anglePrev);
-            pbAngleDisplay.Image = anglePrev;
+            newAngle = ((newAngle % 360) + 360) % 360;
+
+            UpdateAngle(newAngle);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -87,8 +75,7 @@ namespace METALTwister
 
         private void btnFromGame_Click(object sender, EventArgs e)
         {
-            int readVal = BitConverter.ToInt32(Core.ReadBytes(Core.BaseAddress + addr, 4), 0);
-            tbAngle.Value = (int)Math.Round(((float)readVal /ushort.MaxValue) * 3600);
+            nudSpecificSet.Value = getAngleFromGame();
         }
 
         public void ForceFreeRoam()
@@ -112,6 +99,53 @@ namespace METALTwister
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/projectcomet64/metal-twister/wiki");
+        }
+
+        private void pnlRotBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                startPoint = e.Location;
+            }
+        }
+
+        private void pnlRotBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                int deltaX = (e.X - startPoint.X);
+                int newAngle = (int) nudSpecificSet.Value - deltaX;
+                
+                newAngle = ((newAngle % 360) + 360) % 360;
+
+                UpdateAngle(newAngle);
+
+                startPoint = e.Location;
+            }
+        }
+
+        private void pnlRotBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
+
+        private int getAngleFromGame()
+        {
+            int readVal = BitConverter.ToInt32(Core.ReadBytes(Core.BaseAddress + addr, 4), 0);
+            return (int)Math.Round(((float)readVal / ushort.MaxValue) * 360);
+        }
+
+        private void UpdateAngle(int value)
+        {
+            nudSpecificSet.Value = value;
+            byte[] bytes = BitConverter.GetBytes(DegToUInt(value));
+            Core.WriteBytes(Core.BaseAddress + addr, bytes);
+            Imaging.CreateAnglePreview(value, AutoEnabled, cbFreeRoam.Checked, out anglePrev);
+            pbAngleDisplay.Image = anglePrev;
         }
     }
 }
